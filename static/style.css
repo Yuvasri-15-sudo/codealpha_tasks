@@ -1,0 +1,301 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#e0f2fe,#f5f7fb);
+    color:#222;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    transition:0.4s;
+}
+
+.container{
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    color:#222;
+    width:700px;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    animation:slideUp 0.6s ease;
+}
+
+.container:hover{
+    transform:translateY(-5px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes slideUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    color:#008cff;
+}
+
+label{
+    color:#222;
+    font-weight:bold;
+}
+
+textarea{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#f1f5f9;
+    color:#222;
+    font-size:16px;
+    resize:none;
+    outline:none;
+}
+
+textarea::placeholder{
+    color:#777;
+}
+
+textarea:focus,
+select:focus{
+    outline:none;
+    border:2px solid #008cff;
+    box-shadow:0 0 10px rgba(0,140,255,0.4);
+    transform:scale(1.02);
+    transition:0.3s ease;
+}
+
+select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    background:#f1f5f9;
+    color:#222;
+    font-size:16px;
+}
+
+
+/* Add button style here */
+button{
+    width:100%;
+    padding:14px;
+    margin-top:12px;
+    border:none;
+    border-radius:50px;
+    background:#008cff;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+button:hover{
+    background:#0066cc;
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 12px 25px rgba(0,140,255,0.5);
+}
+
+button:active{
+    transform:scale(0.95);
+}
+
+
+/* DARK MODE */
+
+body.dark-mode{
+    background:linear-gradient(135deg,#020617,#0f172a);
+    color:white;
+}
+
+
+body.dark-mode .container{
+    background:rgba(30,41,59,0.85);
+    backdrop-filter:blur(10px);
+    color:white;
+}
+
+
+body.dark-mode label{
+    color:white;
+}
+
+
+body.dark-mode textarea{
+    background:#334155;
+    color:white;
+}
+
+
+body.dark-mode textarea::placeholder{
+    color:#bbb;
+}
+
+
+body.dark-mode select{
+    background:#334155;
+    color:white;
+}
+
+
+body.dark-mode button{
+    background:#0099ff;
+    color:white;
+}
+
+#darkModeBtn{
+    width:auto;
+    padding:10px 20px;
+    background:#222;
+    color:white;
+    transition:0.3s ease;
+}
+
+#darkModeBtn:hover{
+    transform:translateY(-5px)
+scale(1.05);
+    box-shadow:0 10px 20px
+rgba(0,0,0,0.4)
+}
+
+body.dark-mode #darkModeBtn{
+    background:white;
+    color:#222;
+}
+
+#translatedText{
+    background:#f1f5f9;
+    color:#222;
+}
+
+body.dark-mode #translatedText{
+    background:#334155;
+    color:white;
+}
+
+body.dark-mode label{
+    color:white;
+}
+
+/* Swap button size */
+button[type="button"]{
+    width:auto;
+    display:block;
+    margin:15px auto;
+    padding:10px 30px;
+}
+
+textarea:focus,
+select:focus{
+    outline:2px solid #008cff;
+    transform:scale(1.01);
+    transition:0.3s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px){
+
+    .container{
+        width:95%;
+        padding:20px;
+    }
+
+    h1{
+        font-size:24px;
+    }
+
+    textarea{
+        font-size:15px;
+    }
+
+    select,
+    button{
+        font-size:15px;
+    }
+
+    #darkModeBtn{
+        width:100%;
+    }
+}
+
+@media (max-width:768px){
+
+    .container{
+        width:95%;
+        padding:20px;
+    }
+
+    h1{
+        font-size:24px;
+    }
+
+    textarea,
+    select,
+    button{
+        font-size:15px;
+    }
+
+    #darkModeBtn{
+        width:100%;
+    }
+}
+
+body,
+.container,
+textarea,
+select,
+button{
+    transition:all 0.4s ease;
+}
+
+.history{
+    margin-top:20px;
+    max-height:200px;
+    overflow-y:auto;
+    border-radius:10px;
+    padding:10px;
+    background:#f1f5f9;
+}
+
+.history-item{
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:8px;
+    background:white;
+    border-left:4px solid #008cff;
+}
+
+body.dark-mode .history{
+    background:#334155;
+}
+
+body.dark-mode .history-item{
+    background:#1e293b;
+    color:white;
+}
