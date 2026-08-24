@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-Commerce FAQ Chatbot</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="chatbot-container">
+
+    <!-- HEADER -->
+    <header class="chat-header">
+
+        <div class="bot-icon">
+            🤖
+        </div>
+
+        <div class="header-text">
+            <h1>FAQ Assistant</h1>
+
+            <p>
+                <span class="online-dot"></span>
+                Online • E-Commerce Support
+            </p>
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="theme-button"
+                onclick="toggleTheme()"
+                id="theme-button">
+                🌙
+            </button>
+
+            <button
+                class="clear-button"
+                onclick="clearChat()">
+                🗑 Clear
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- DASHBOARD STATISTICS -->
+
+    <div class="stats-bar">
+
+        <div class="stat-card">
+
+            <span class="stat-icon">💬</span>
+
+            <div>
+                <strong id="question-count">0</strong>
+                <small>Questions</small>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">🎯</span>
+
+            <div>
+                <strong id="average-confidence">0%</strong>
+                <small>Avg. Match</small>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">📚</span>
+
+            <div>
+                <strong>40+</strong>
+                <small>FAQs</small>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">🧠</span>
+
+            <div>
+                <strong>NLP</strong>
+                <small>Technology</small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- WELCOME -->
+
+    <div class="welcome-section">
+
+        <div class="welcome-icon">
+            💬
+        </div>
+
+        <h2>How can I help you?</h2>
+
+        <p>
+            Ask me anything about orders, payments,
+            shipping, returns, refunds and more.
+        </p>
+
+    </div>
+
+
+    <!-- SUGGESTIONS -->
+
+    <div class="suggestions">
+
+        <button onclick="askSuggestion('How can I track my order?')">
+            📦 Track my order
+        </button>
+
+        <button onclick="askSuggestion('How can I return a product?')">
+            🔄 Return a product
+        </button>
+
+        <button onclick="askSuggestion('When will I receive my refund?')">
+            💰 Refund status
+        </button>
+
+        <button onclick="askSuggestion('What payment methods are accepted?')">
+            💳 Payment methods
+        </button>
+
+    </div>
+
+
+    <!-- CHAT -->
+
+    <main id="chat-box" class="chat-box">
+
+        <div class="message bot-message">
+
+            <div class="message-avatar">
+                🤖
+            </div>
+
+            <div class="message-content">
+
+                <p>
+                    Hello! 👋 I'm your E-Commerce FAQ Assistant.
+                    How can I help you today?
+                </p>
+
+                <span class="message-time">
+                    Just now
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- TYPING -->
+
+    <div id="typing" class="typing hidden">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <label>Assistant is typing...</label>
+
+    </div>
+
+
+    <!-- INPUT -->
+
+    <div class="input-area">
+
+        <input
+            type="text"
+            id="user-input"
+            placeholder="Type your question here..."
+            autocomplete="off"
+        >
+
+        <button
+            id="send-button"
+            onclick="sendMessage()">
+
+            <span>Send</span>
+            ➤
+
+        </button>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="chat-footer">
+
+        <span>🔒 Secure FAQ Assistant</span>
+
+        <span>
+            NLP • TF-IDF • Cosine Similarity
+        </span>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+let questionCount = 0;
+let confidenceTotal = 0;
+
+
+// =====================================================
+// INPUT ENTER KEY
+// =====================================================
+
+const input = document.getElementById("user-input");
+
+const chatBox = document.getElementById("chat-box");
+const typing = document.getElementById("typing");
+const sendButton = document.getElementById("send-button");
+
+input.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+
+});
+
+
+// =====================================================
+// GET TIME
+// =====================================================
+
+function getTime() {
+
+    const now = new Date();
+
+    return now.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+}
+
+
+// =====================================================
+// ADD MESSAGE
+// =====================================================
+
+function addMessage(message, sender, confidence = null) {
+
+    const messageDiv = document.createElement("div");
+
+    messageDiv.classList.add(
+        "message",
+        sender === "user"
+            ? "user-message"
+            : "bot-message"
+    );
+
+
+    if (sender === "user") {
+
+        messageDiv.innerHTML = `
+
+            <div class="message-content">
+
+                <p>${escapeHTML(message)}</p>
+
+                <span class="message-time">
+                    ${getTime()}
+                </span>
+
+            </div>
+
+            <div class="message-avatar">
+                👤
+            </div>
+
+        `;
+
+    } else {
+
+        let confidenceHTML = "";
+
+        if (confidence !== null && confidence > 0) {
+
+            confidenceHTML = `
+                <div class="confidence">
+                    Match confidence: ${confidence}%
+                </div>
+            `;
+
+        }
+
+
+        messageDiv.innerHTML = `
+
+            <div class="message-avatar">
+                🤖
+            </div>
+
+            <div class="message-content">
+
+                <p>${escapeHTML(message)}</p>
+
+                ${confidenceHTML}
+
+                <span class="message-time">
+                    ${getTime()}
+                </span>
+
+            </div>
+
+        `;
+
+    }
+
+
+    chatBox.appendChild(messageDiv);
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+}
+
+
+// =====================================================
+// SEND MESSAGE
+// =====================================================
+
+async function sendMessage() {
+
+    const question = input.value.trim();
+
+
+    if (!question) {
+        return;
+    }
+
+
+    addMessage(question, "user");
+
+    input.value = "";
+
+    input.disabled = true;
+    sendButton.disabled = true;
+
+    typing.classList.remove("hidden");
+
+
+    try {
+
+        const response = await fetch("/chat", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                question: question
+            })
+
+        });
+
+
+        const data = await response.json();
+
+
+        typing.classList.add("hidden");
+
+
+        addMessage(
+            data.answer,
+            "bot",
+            data.confidence
+        );
+
+
+        // Update statistics
+
+        questionCount++;
+
+        confidenceTotal += Number(data.confidence || 0);
+
+        updateStatistics();
+
+
+        // Save chat
+
+        saveChat();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        typing.classList.add("hidden");
+
+
+        addMessage(
+            "Sorry, something went wrong. Please try again.",
+            "bot"
+        );
+
+    }
+
+
+    input.disabled = false;
+    sendButton.disabled = false;
+
+    input.focus();
+
+}
+
+
+// =====================================================
+// UPDATE STATISTICS
+// =====================================================
+
+function updateStatistics() {
+
+    document.getElementById(
+        "question-count"
+    ).textContent = questionCount;
+
+
+    let average = 0;
+
+    if (questionCount > 0) {
+
+        average = confidenceTotal / questionCount;
+
+    }
+
+
+    document.getElementById(
+        "average-confidence"
+    ).textContent =
+        Math.round(average) + "%";
+
+}
+
+
+// =====================================================
+// SUGGESTIONS
+// =====================================================
+
+function askSuggestion(question) {
+
+    input.value = question;
+
+    sendMessage();
+
+}
+
+
+// =====================================================
+// CLEAR CHAT
+// =====================================================
+
+function clearChat() {
+
+    chatBox.innerHTML = `
+
+        <div class="message bot-message">
+
+            <div class="message-avatar">
+                🤖
+            </div>
+
+            <div class="message-content">
+
+                <p>
+                    Chat cleared! 👋
+                    How can I help you?
+                </p>
+
+                <span class="message-time">
+                    ${getTime()}
+                </span>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    questionCount = 0;
+
+    confidenceTotal = 0;
+
+    updateStatistics();
+
+
+    localStorage.removeItem("faqChatHistory");
+
+}
+
+
+// =====================================================
+// SAVE CHAT
+// =====================================================
+
+function saveChat() {
+
+    localStorage.setItem(
+        "faqChatHistory",
+        chatBox.innerHTML
+    );
+
+}
+
+
+// =====================================================
+// LOAD CHAT
+// =====================================================
+
+function loadChat() {
+
+    const savedChat =
+        localStorage.getItem("faqChatHistory");
+
+
+    if (savedChat) {
+
+        chatBox.innerHTML = savedChat;
+
+    }
+
+}
+
+
+// =====================================================
+// DARK MODE
+// =====================================================
+
+function toggleTheme() {
+
+    document.body.classList.toggle("dark-mode");
+
+
+    const button =
+        document.getElementById("theme-button");
+
+
+    if (
+        document.body.classList.contains("dark-mode")
+    ) {
+
+        button.textContent = "☀️";
+
+        localStorage.setItem(
+            "faqTheme",
+            "dark"
+        );
+
+    } else {
+
+        button.textContent = "🌙";
+
+        localStorage.setItem(
+            "faqTheme",
+            "light"
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// LOAD THEME
+// =====================================================
+
+function loadTheme() {
+
+    const theme =
+        localStorage.getItem("faqTheme");
+
+
+    if (theme === "dark") {
+
+        document.body.classList.add(
+            "dark-mode"
+        );
+
+        document.getElementById(
+            "theme-button"
+        ).textContent = "☀️";
+
+    }
+
+}
+
+
+// =====================================================
+// ESCAPE HTML
+// =====================================================
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+// =====================================================
+// STARTUP
+// =====================================================
+
+loadTheme();
+
+loadChat();
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+[
+    {
+        "question": "How can I place an order?",
+        "answer": "To place an order, search for the product you want, open its product page, click 'Add to Cart', and then proceed to checkout. Enter your delivery details, select a payment method, and confirm your order."
+    },
+    {
+        "question": "How do I create an account?",
+        "answer": "Click the 'Sign Up' or 'Create Account' option on the website and enter your name, email address, and password. Follow the verification instructions to complete registration."
+    },
+    {
+        "question": "How can I log in to my account?",
+        "answer": "Click the 'Login' button and enter your registered email address and password. If your details are correct, you will be signed in to your account."
+    },
+    {
+        "question": "I forgot my password. What should I do?",
+        "answer": "Click 'Forgot Password' on the login page. Enter your registered email address and follow the password reset instructions sent to your email."
+    },
+    {
+        "question": "How can I track my order?",
+        "answer": "Go to 'My Orders' in your account and select the order you want to track. You can view the current order status and tracking information there."
+    },
+    {
+        "question": "How long does delivery take?",
+        "answer": "Standard delivery usually takes 3 to 7 business days. Delivery time may vary depending on your location, product availability, and the selected shipping method."
+    },
+    {
+        "question": "Do you offer express delivery?",
+        "answer": "Yes, express delivery may be available for selected products and locations. Available shipping options and estimated delivery dates are displayed during checkout."
+    },
+    {
+        "question": "How much does shipping cost?",
+        "answer": "Shipping charges depend on the delivery location, order value, product size, and shipping method. The applicable shipping fee will be shown before you place the order."
+    },
+    {
+        "question": "Can I change my delivery address?",
+        "answer": "You can change the delivery address before your order is shipped. Go to your order details and select the address editing option if it is available."
+    },
+    {
+        "question": "Can I cancel my order?",
+        "answer": "Yes, you can cancel an order if it has not been shipped. Open 'My Orders', select the order, and choose the cancellation option."
+    },
+    {
+        "question": "How do I return a product?",
+        "answer": "Open 'My Orders', select the product you want to return, and choose 'Return'. Select a valid return reason and follow the instructions to schedule the return."
+    },
+    {
+        "question": "What is your return policy?",
+        "answer": "Most eligible products can be returned within the specified return period. Products should generally be unused and returned with their original packaging, accessories, and tags."
+    },
+    {
+        "question": "How many days do I have to return an item?",
+        "answer": "Eligible products can usually be returned within 7 to 30 days depending on the product category and seller policy. Check the product page for the exact return period."
+    },
+    {
+        "question": "Can I exchange a product instead of returning it?",
+        "answer": "Exchange may be available for selected products and sizes. Check the order details or return section to see whether an exchange option is available."
+    },
+    {
+        "question": "When will I receive my refund?",
+        "answer": "Refunds are normally processed after the returned product is received and inspected. Depending on the payment method, the refund may take several business days to appear in your account."
+    },
+    {
+        "question": "Where will my refund be credited?",
+        "answer": "Refunds are generally credited to the original payment method used for the purchase. For cash-on-delivery orders, the available refund method may depend on the platform's policy."
+    },
+    {
+        "question": "What should I do if I receive a damaged product?",
+        "answer": "If your product arrives damaged, take clear photographs of the product and packaging and contact customer support as soon as possible. You can also request a return or replacement if eligible."
+    },
+    {
+        "question": "What if I receive the wrong product?",
+        "answer": "If you receive a product different from what you ordered, go to 'My Orders' and initiate a return or replacement request. Provide the requested details and photographs if necessary."
+    },
+    {
+        "question": "What if an item is missing from my order?",
+        "answer": "Check your order details to confirm whether the items were shipped separately. If an item is missing from the shipment, contact customer support with your order number."
+    },
+    {
+        "question": "Can I order more than one product at a time?",
+        "answer": "Yes. You can add multiple products to your shopping cart and place them together in a single order, subject to product availability."
+    },
+    {
+        "question": "What payment methods are accepted?",
+        "answer": "Available payment methods may include credit cards, debit cards, UPI, net banking, digital wallets, and cash on delivery for eligible orders."
+    },
+    {
+        "question": "Is cash on delivery available?",
+        "answer": "Cash on delivery may be available for selected products and delivery locations. You can check whether COD is available during checkout."
+    },
+    {
+        "question": "Is online payment secure?",
+        "answer": "Yes. Online payments are processed through secure payment gateways using industry-standard security measures. Never share your password, OTP, or PIN with anyone."
+    },
+    {
+        "question": "Why did my payment fail?",
+        "answer": "A payment may fail because of insufficient funds, incorrect payment details, bank restrictions, network problems, or temporary payment gateway issues. Try again or use another payment method."
+    },
+    {
+        "question": "My money was deducted but the order was not placed. What should I do?",
+        "answer": "If your payment was deducted but the order was not created, wait for the payment status to update. If the amount is not automatically reversed, contact customer support with your transaction details."
+    },
+    {
+        "question": "Can I use a coupon code?",
+        "answer": "Yes, if you have a valid coupon code, enter it in the coupon or promotional code section during checkout and click 'Apply'."
+    },
+    {
+        "question": "Why is my coupon code not working?",
+        "answer": "A coupon may not work because it has expired, has minimum purchase requirements, is limited to specific products, or has already been used. Check the coupon terms and conditions."
+    },
+    {
+        "question": "Where can I find current offers and discounts?",
+        "answer": "You can find available offers and discounts on the homepage, product pages, promotional banners, and special offers section."
+    },
+    {
+        "question": "How can I search for a product?",
+        "answer": "Use the search bar at the top of the website and enter the product name, category, or keyword. You can also use filters to narrow down the results."
+    },
+    {
+        "question": "How can I check product availability?",
+        "answer": "Open the product page and enter your delivery location if required. The page will show whether the product is currently available for your location."
+    },
+    {
+        "question": "Can I save products for later?",
+        "answer": "Yes. You can add eligible products to your wishlist or favorites so that you can easily find them later."
+    },
+    {
+        "question": "How do I remove an item from my cart?",
+        "answer": "Open your shopping cart, find the product you want to remove, and click the 'Remove' or delete option."
+    },
+    {
+        "question": "Can I change the quantity of an item in my cart?",
+        "answer": "Yes. Open your cart and use the quantity controls next to the product to increase or decrease the number of items."
+    },
+    {
+        "question": "What happens if a product goes out of stock?",
+        "answer": "If a product is out of stock, you may not be able to place an order for it. You can check the product page later or use an available notification option if provided."
+    },
+    {
+        "question": "How can I contact customer support?",
+        "answer": "You can contact customer support through the Help or Contact Us section. Depending on the platform, support may be available through email, chat, or phone."
+    },
+    {
+        "question": "How can I update my profile information?",
+        "answer": "Log in to your account, open your profile or account settings, and update the information you want to change. Save the changes after editing."
+    },
+    {
+        "question": "How can I change my email address?",
+        "answer": "Go to your account settings and look for the email or account information section. You may need to verify the new email address before the change is completed."
+    },
+    {
+        "question": "How can I delete my account?",
+        "answer": "Go to your account settings and look for the account deletion or closure option. If the option is not available, contact customer support for assistance."
+    },
+    {
+        "question": "Can I review a product after purchasing it?",
+        "answer": "Yes. After purchasing an eligible product, you can usually submit a rating and review from your order history or product page."
+    },
+    {
+        "question": "How do I know if a product is genuine?",
+        "answer": "Purchase products from verified sellers and check product information, seller details, ratings, and reviews. For branded products, look for authorized seller information where available."
+    },
+    {
+        "question": "What should I do if I receive an incorrect or defective product?",
+        "answer": "Contact customer support and provide your order number, product details, and photographs showing the issue. You can request a replacement, return, or refund depending on the applicable policy."
+    },
+    {
+        "question": "What should I do if my order is delayed or late?",
+        "answer": "If your order is delayed, please check the tracking information"
+    }
+]
